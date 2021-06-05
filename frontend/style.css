@@ -1,0 +1,258 @@
+/* 
+    this is a common technique called a CSS reset. 
+    The * means "all elements" (a universal selector), 
+    so we are setting all elements to have zero margins, 
+    and zero padding, thus making them look the same in all browsers  
+*/
+* {
+  box-sizing: border-box;
+}
+html {
+  font-size: 62.5%; /* 16px * 62.5 = 10 px = 1 rem*/
+}
+
+body {
+  height: 100vh;
+  font: 1.6rem helvetica, arial;
+  margin: 0;
+}
+a {
+  color: #000000;
+  text-decoration: none;
+}
+a:hover {
+  color: #f08040;
+}
+button{
+  cursor: pointer;
+}
+input,
+button{
+  font: 1.6rem helvetica;
+  padding: 1rem;
+  border: 0.1rem #808080 solid;
+  border-radius: 0.5rem;
+}
+input:hover,
+button:hover{
+  border-color: 0.1rem #404040 solid ;
+}
+button.primary{
+  background-color: #f0c040;
+}
+.fw{
+  width: 100%;
+}
+.success{
+  color: rgb(22, 177, 22);
+  font-weight: bold;
+}
+.error{
+  color: red;
+  font-weight: bold;
+}
+.grid-container {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 5rem 1fr 5rem;
+  height: 100%;
+}
+header {
+  grid-area: header;
+  background-color: #203040;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+header a {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: none;
+}
+header a:hover {
+  color: #f08040;
+}
+.brand a {
+  font-size: 3rem;
+}
+footer {
+  background-color: #203040;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+/* 
+  A flex container expands items to fill available free space or shrinks them to prevent overflow
+*/
+/* Products */
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+}
+.products li {
+  flex: 0 1 30rem;
+  margin: 1rem;
+  margin-bottom: 0;
+  height: 42rem;
+  border-top: 0.2rem #e0e0e0 solid;
+}
+.product {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 75%;
+}
+.product img {
+  height: 26rem;
+  width: 22rem;
+  margin-top: 2rem;
+}
+.product-name {
+  line-height: 2.2rem;
+}
+.product-brand {
+  font-size: 1.2rem;
+  color: #808080;
+}
+.product-price {
+  font-size: 2rem;
+}
+
+/* Rating */
+.rating {
+  color: #ffc000;
+  font-size: 1.8rem;
+}
+
+.rating span:last-child{
+  color: #444;
+  font-size: 1.4rem;
+}
+
+.content{
+  padding: 1rem;
+}
+
+/* Product Details */
+.details{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+.details-image{
+  flex: 2 1 60rem
+}
+
+.details-image img{
+  max-width: 60rem;
+  height: 46rem;
+}
+.details-info, .details-action{
+  flex: 1 1 30rem;
+}
+.details-info ul, .details-action ul{
+  padding: 0;
+  list-style: none;
+}
+.details-action{
+  border: 0.1rem #808080 solid;
+  border-radius: 0.5rem;
+  background-color: #f8f8f8;
+  padding: 1rem;
+}
+
+/* Cart */
+.cart{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.cart-list{
+  flex: 3 1 60rem;
+}
+.cart-action {
+  flex: 1 1 20rem;
+  background-color: #f0f0f0 ;
+  border-radius: 0.5rem;
+  padding: 1rem;
+}
+.cart-list-container{
+  padding: 1rem;
+  list-style-type: none;
+}
+.cart-list-container li{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+  border-bottom: 0.1rem #c0c0c0 solid;
+}
+.cart-list-container img{
+  height: 10rem;
+  width: 10rem;
+}
+.cart-list-container li:first-child{
+  flex: flex-end;
+}
+.cart-image{
+  flex: 1 1;
+}
+.cart-name{
+  flex: 8 1;
+}
+.cart-price{
+  flex: 1 1;
+  text-align: right;
+}
+.cart-name > div {
+  padding: 1rem;
+}
+.cart-list h3{
+  margin: 0;
+}
+
+.cart-list button, .cart-list select {
+  font-size: 1rem;
+  padding: .5rem;
+}
+
+/* Form Style */
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.form-items{
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+  padding: 2rem;
+  border: 0.1rem #c0c0c0 solid;
+  border-radius: 0.5rem;
+  list-style: none;
+}
+.form-items li{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.form-container h1{
+  font-size: 2.5rem;
+}
