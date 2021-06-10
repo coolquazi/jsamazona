@@ -4,7 +4,6 @@ import Error404Screen from './screen/Error404Screen.js';
 import HomeScreen from './screen/HomeScreen.js';
 import ProductScreen from './screen/ProductScreen.js';
 import ProfileScreen from './screen/ProfileScreen.js';
-
 import RegisterScreen from './screen/RegisterScreen.js';
 import signInScreen from './screen/signInScreen.js';
 import { hideLoading, parseRequestUrl, showLoading } from './utils.js';

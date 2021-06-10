@@ -1,10 +1,14 @@
 
 import { update } from "../api";
-import { getUserInfo, setUserInfo } from "../localStorage";
+import { getUserInfo, setUserInfo, clearUser } from "../localStorage";
 import { hideLoading, showLoading, showMessage } from "../utils";
 
 const ProfileScreen = {
   after_render: () => {
+      document.getElementById('signout-button').addEventListener('click', () => {
+          clearUser();
+          document.location.hash = '/';
+      })
       document.getElementById('profile-form').addEventListener('submit', async (e) => {
           e.preventDefault();
           showLoading();
@@ -21,7 +25,7 @@ const ProfileScreen = {
               setUserInfo(data);
               document.location.hash = '/';
           }
-      })
+      });
   },
   render: () => {
       const {name, email} = getUserInfo();
@@ -30,10 +34,10 @@ const ProfileScreen = {
       }
     return `
             <div class= 'form-container'>
-                <form id ='register-form'>
+                <form id ='profile-form'>
                 <ul class = 'form-items'>
                     <li>
-                        <h1>Register</h1>
+                        <h1>User Profile</h1>
                     </li>
                     <li>
                         <label for='name'>Name</label>
@@ -49,6 +53,9 @@ const ProfileScreen = {
                     </li>
                     <li>
                         <button type='submit' class='primary'>Update</button>
+                    </li>
+                    <li>
+                        <button type='submit' id= 'signout-button'>Log Out</button>
                     </li>
                 </ul>
                 </form>
