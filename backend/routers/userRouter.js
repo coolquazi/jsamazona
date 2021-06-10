@@ -46,4 +46,55 @@ userRouter.post(
   })
 );
 
+userRouter.post(
+  "/register",
+  expressAsyncHandler(async (req, res) => {
+    const user = new User({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+    });
+
+    const createdUser = await user.save();
+
+    if (!createdUser) {
+      res.status(401).send({
+        message: "Invalid User",
+      });
+    } else {
+      res.send({
+        _id: createdUser._id,
+        name: createdUser.name,
+        email: createdUser.email,
+        isAdmin: createdUser.isAdmin,
+        token: generateToken(createdUser),
+      })
+    }
+  })
+);
+
+userRouter.put (
+  "/:id",
+  expressAsyncHandler(async (req, res) => {
+    const user = await User.findById(req.params.id);
+    if(!user){
+      res.status(404).send({
+        message : 'User not found',
+      });
+    } else {
+      user.name = req.body.name || user.name,
+      user.email = req.body.email || user.email,
+      user.password = req.body.password || user.password;
+      const updatedUser = await user.save();
+      res.send({
+        _id: updatedUser._id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        isAdmin: updatedUser.isAdmin,
+        token: generateToken(updatedUser)
+      })
+    }
+  })
+)
+
 export default userRouter;

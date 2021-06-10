@@ -7,7 +7,6 @@ import mongoose from "mongoose";
 import config  from "./config";
 import userRouter from "./routers/userRouter.js";
 
-
 mongoose.connect(config.MONGODB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
